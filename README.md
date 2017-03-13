@@ -1,2 +1,5 @@
 # mume
-some scripts for mume mostly in jscript for jmc
+some jscripts for mume (http://mume.org)
+
+read the file on how to use it
+the jscript part goes into commonlib.scr
