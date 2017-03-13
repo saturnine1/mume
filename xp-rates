@@ -1,0 +1,125 @@
+
+jmc.RegisterHandler("Input", "OnInput()");
+jmc.RegisterHandler("Incoming", "OnIncomingLine()");
+
+/**
+ * JMC Event Handlers
+ */
+function OnInput()
+{
+
+}
+
+function OnIncomingLine()
+{
+  var line = jmc.Event;
+  
+  // XP-RATE SCRIPT
+	if ( startXpReg.exec(line) ){
+		var xparray = /(\d+)/.exec(line);
+		startXp = parseInt( xparray[1] );
+		startXpDate = new Date();
+		jmc.parse( "#showme [XP-rates are reset]" );
+	}
+	
+	if ( currentXpReg.exec(line) ){
+		var xparray = /(\d+)\s(\d+)/.exec(line);
+		var currentXp = parseInt( xparray[1] );
+		var currentTnl = parseInt( xparray[2] );	
+		gainedExperience( currentXp, currentTnl );
+	}
+	
+	if ( emoteCurrentXpReg.exec(line) ){
+		var xparray = /(\d+)\s(\d+)/.exec(line);
+		var currentXp = parseInt( xparray[1] );
+		var currentTnl = parseInt( xparray[2] );
+		showGainedExperience( currentXp, currentTnl );			
+	}
+}
+
+/**
+ * XP-RATE SCRIPT
+ **/
+var startXp = 0;
+var startXpDate = new Date();
+var startXpReg = /^resetxprates\s\d+/;
+var currentXpReg = /^gainedxprates\s\d+\s\d+/;
+var emoteCurrentXpReg = /^showgainedxprates\s\d+\s\d+/;
+
+function gainedExperience(currentXp, currentTnl){
+	var currentDate = new Date();
+	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
+    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
+	
+	var gainedXp = currentXp - startXp;	
+	var xpPerMin = 0;
+	var minsToLevel = 0;
+	if ( gainedXp > 0 ){
+		xpPerMin = Math.round( gainedXp / minutes );
+	}
+	var	xpPerHour = ( xpPerMin * 60 );	
+
+	if ( currentTnl == 0 ){ 
+		minsToLevel = 0; 
+	}else if ( xpPerMin == 0 ){	
+		minsToLevel = "infinity";
+	}else{ 
+		minsToLevel = Math.round( currentTnl / xpPerMin ); 
+	}
+	if ( xpPerHour >= 1000 ){
+		xpPerHour = Math.round( xpPerHour/1000 ) + "k";
+	}
+	if ( currentTnl >= 1000 && currentTnl < 1000000 ){
+		currentTnl = Math.round( currentTnl/1000 );
+		currentTnl = currentTnl + "k";
+	}else if(currentTnl >= 1000000){
+		currentTnl =  Math.round( ( currentTnl/1000000 ) * 100 ) /100;
+		currentTnl = currentTnl + "m";	
+	}
+	if ( gainedXp >= 1000 && gainedXp < 1000000 ){
+		gainedXp = ( Math.round( gainedXp/1000 ) ) + "k";	
+	}else if ( gainedXp >= 1000000 ){
+		gainedXp = ( Math.round( ( gainedXp/1000000 ) * 100 ) /100 ) + "m";
+	}
+	jmc.parse("#showme xps: " + xpPerHour + " /h, gained: " + gainedXp + " xp in " + minutes + " mins." );
+	jmc.parse("#showme tnl: " + currentTnl + " xp in " + minsToLevel + " mins." );
+}
+
+function showGainedExperience(currentXp, currentTnl){
+	var currentDate = new Date();
+	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
+    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
+	
+	var gainedXp = currentXp - startXp;	
+	var xpPerMin = 0;
+	var minsToLevel = 0;
+	if ( gainedXp > 0 ){
+		xpPerMin = Math.round( gainedXp / minutes );
+	}
+	var	xpPerHour = ( xpPerMin * 60 );	
+
+	if ( currentTnl == 0 ){ 
+		minsToLevel = 0; 
+	}else if ( xpPerMin == 0 ){	
+		minsToLevel = "infinity";
+	}else{ 
+		minsToLevel = Math.round( currentTnl / xpPerMin ); 
+	}
+	if ( xpPerHour >= 1000 ){
+		xpPerHour = Math.round( xpPerHour/1000 ) + "k";
+	}
+	if ( currentTnl >= 1000 && currentTnl < 1000000 ){
+		currentTnl = Math.round( currentTnl/1000 );
+		currentTnl = currentTnl + "k";
+	}else if(currentTnl >= 1000000){
+		currentTnl =  Math.round( ( currentTnl/1000000 ) * 100 ) /100;
+		currentTnl = currentTnl + "m";	
+	}
+	if ( gainedXp >= 1000 && gainedXp < 1000000 ){
+		gainedXp = ( Math.round( gainedXp/1000 ) ) + "k";	
+	}else if ( gainedXp >= 1000000 ){
+		gainedXp = ( Math.round( ( gainedXp/1000000 ) * 100 ) /100 ) + "m";
+	}
+	jmc.parse("emote xps: " + xpPerHour + " /h, gained: " + gainedXp + " xp in " + minutes + " mins." );
+	jmc.parse("emote tnl: " + currentTnl + " xp in " + minsToLevel + " mins." );
+}
