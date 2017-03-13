@@ -49,7 +49,7 @@ var emoteCurrentXpReg = /^showgainedxprates\s\d+\s\d+/;
 function gainedExperience(currentXp, currentTnl){
 	var currentDate = new Date();
 	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
-    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
+    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1 
 	
 	var gainedXp = currentXp - startXp;	
 	var xpPerMin = 0;
