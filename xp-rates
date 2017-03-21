@@ -10,7 +10,7 @@ xps: 437k /h, gained: 1.03m xp in 141 mins.
 tnl: 52k xp in 7 mins.
 
 ##################JMC###################
-jmc settings to add to your settings file below and change script language to jscript in options
+jmc settings to add to your settings file below and change script language to jscript inside jmc->options->setup->scripts
 "xp" shows you xprates
 "xpp" emotes the xprates to the room
 "xpreset" resets all info to 0
@@ -62,9 +62,7 @@ function OnIncomingLine()
 	}
 }
 
-/**
- * XP-RATE SCRIPT
- **/
+//  XP-RATE SCRIPT //
 var startXp = 0;
 var startXpDate = new Date();
 var startXpReg = /^resetxprates\s\d+/;
