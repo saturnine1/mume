@@ -1,6 +1,9 @@
+Here's my little xprate-counter, you are welcome to use it.
+It prints average xp/hour, total gained xp in what time, how much you have to next level and how many minutes to next level.
+
 ## output ingame looks like this:
-xps: 404k /h, gained: 1.1m xp in 164 mins.
-tnl: 776k xp in 115 mins.
+xps: 222k /h, gained: 152k xp in 41 mins.
+tnl: 177k xp in 48 mins.
 ## another example:
 xps: 437k /h, gained: 1.03m xp in 141 mins.
 tnl: 52k xp in 7 mins.
