@@ -1,5 +1,5 @@
 Here's my little xprate-counter, you are welcome to use it.
-It prints average xp/hour, total gained xp in what time, how much you have to next level and how many minutes to next level.
+It prints average xp/hour, total gained xp in what time, how much xp to next level and minutes to next level.
 
 ## output ingame looks like this:
 xps: 222k /h, gained: 152k xp in 41 mins.
@@ -9,7 +9,7 @@ xps: 437k /h, gained: 1.03m xp in 141 mins.
 tnl: 52k xp in 7 mins.
 
 ##################JMC###################
-jmc settings to add to your settings file below andchange script language to jscript in options
+jmc settings to add to your settings file below and change script language to jscript in options
 "xp" shows you xprates
 "xpp" emotes the xprates to the room
 "xpreset" resets all info to 0
