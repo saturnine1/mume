@@ -26,7 +26,7 @@ the subs gags/hides output you dont need to see, less clutter
 
 ################jscripts###################
 add everything below to commonlib.scr, if you already have a bunch of stuff there, like OnIncomingLine(),
-copy the stuff inside it into your funtion, and add the rest at the end of the file
+copy the stuff inside it into your funtion, and add the rest at the end of the file:
 
 jmc.RegisterHandler("Input", "OnInput()");
 jmc.RegisterHandler("Incoming", "OnIncomingLine()");
