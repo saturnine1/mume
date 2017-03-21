@@ -13,11 +13,16 @@ jmc settings to add to your settings file below andchange script language to jsc
 "xp" shows you xprates
 "xpp" emotes the xprates to the room
 "xpreset" resets all info to 0
+the action just resets xp at login, can be removed
+the subs gags/hides output you dont need to see, less clutter
 
 #alias {xp} {inf gainedxprates %x %X} {default}
 #alias {xpp} {inf showgainedxprates %x %X} {default}
 #alias {xpreset} {inf resetxprates %x} {default}
 #action {Never forget! Try to role-play...} {xpreset} {default}
+#substitute {showgainedxprates %1 %2} {.}
+#substitute {resetxprates %1} {.}
+#substitute {gainedxprates %1 %2} {.}
 
 ################jscripts###################
 add everything below to commonlib.scr, if you already have a bunch of stuff there, like OnIncomingLine(), copy the stuff inside it into your funtion, and add the rest at the end of the file
