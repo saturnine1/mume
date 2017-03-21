@@ -79,7 +79,7 @@ var minsToLevel;
 function calcXprates(xparray){
 	var currentDate = new Date();
 	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
-    minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
+    	minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
 	var currentXp = parseInt( xparray[1] );
 	var currentTnl = parseInt( xparray[2] );
 	var xpPerMin = 0;
