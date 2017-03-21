@@ -1,3 +1,23 @@
+## output ingame looks like this:
+xps: 404k /h, gained: 1.1m xp in 164 mins.
+tnl: 776k xp in 115 mins.
+## another example:
+xps: 437k /h, gained: 1.03m xp in 141 mins.
+tnl: 52k xp in 7 mins.
+
+##################JMC###################
+jmc settings to add to your settings file below andchange script language to jscript in options
+"xp" shows you xprates
+"xpp" emotes the xprates to the room
+"xpreset" resets all info to 0
+
+#alias {xp} {inf gainedxprates %x %X} {default}
+#alias {xpp} {inf showgainedxprates %x %X} {default}
+#alias {xpreset} {inf resetxprates %x} {default}
+#action {Never forget! Try to role-play...} {xpreset} {default}
+
+################jscripts###################
+add everything below to commonlib.scr, if you already have a bunch of stuff there, like OnIncomingLine(), copy the stuff inside it into your funtion, and add the rest at the end of the file
 
 jmc.RegisterHandler("Input", "OnInput()");
 jmc.RegisterHandler("Incoming", "OnIncomingLine()");
@@ -12,10 +32,9 @@ function OnInput()
 
 function OnIncomingLine()
 {
-  var line = jmc.Event;
+	var line = jmc.Event;
   
-  // XP-RATE SCRIPT
-	if ( startXpReg.exec(line) ){
+  	if ( startXpReg.exec(line) ){
 		var xparray = /(\d+)/.exec(line);
 		startXp = parseInt( xparray[1] );
 		startXpDate = new Date();
@@ -49,7 +68,7 @@ var emoteCurrentXpReg = /^showgainedxprates\s\d+\s\d+/;
 function gainedExperience(currentXp, currentTnl){
 	var currentDate = new Date();
 	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
-    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1 
+	var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1 
 	
 	var gainedXp = currentXp - startXp;	
 	var xpPerMin = 0;
@@ -88,7 +107,7 @@ function gainedExperience(currentXp, currentTnl){
 function showGainedExperience(currentXp, currentTnl){
 	var currentDate = new Date();
 	var totalSeconds = (currentDate.getTime()-startXpDate.getTime())/1000;
-    var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
+    	var minutes = 1 + ( Math.floor(totalSeconds / 60) ); // starts on minute 1
 	
 	var gainedXp = currentXp - startXp;	
 	var xpPerMin = 0;
