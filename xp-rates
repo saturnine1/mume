@@ -29,6 +29,7 @@ the subs gags/hides output you dont need to see, less clutter
 add everything below to commonlib.scr(check readme-file if you dont understand), if you already have a bunch of stuff there,
 like OnIncomingLine(), copy the stuff inside it into your funtion, and add the rest at the end of the file:
 
+```javascript
 jmc.RegisterHandler("Input", "OnInput()");
 jmc.RegisterHandler("Incoming", "OnIncomingLine()");
 
@@ -120,3 +121,4 @@ function showGainedExperience(xparray){
 	jmc.parse("emote xps: " + xpPerHour + " /h, gained: " + gainedXp + " xp in " + minutes + " mins." );
 	jmc.parse("emote tnl: " + tnl + " xp in " + minsToLevel + " mins." );
 }
+```
