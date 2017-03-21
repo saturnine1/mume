@@ -26,7 +26,7 @@ the subs gags/hides output you dont need to see, less clutter
 #substitute {gainedxprates %1 %2} {.}
 
 ################jscripts###################
-add everything below to commonlib.scr(in /jmc/settings/ folders), if you already have a bunch of stuff there, like OnIncomingLine(),
+add everything below to commonlib.scr(check readme-file if you dont understand), if you already have a bunch of stuff there, like OnIncomingLine(),
 copy the stuff inside it into your funtion, and add the rest at the end of the file:
 
 jmc.RegisterHandler("Input", "OnInput()");
